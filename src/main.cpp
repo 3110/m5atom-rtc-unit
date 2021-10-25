@@ -19,8 +19,6 @@ const int SCL_PIN = 32;
 const char* NVS_NAMESPACE = "RTCUnit";
 const char* NVS_CONFIG_PATH = "/settings.json";
 
-const char DAY_OF_WEEK[][4] = {"Sun", "Mon", "Tue", "Wed", "Thr", "Fri", "Sat"};
-
 NTPController ntpController(NVS_NAMESPACE);
 RTCUnit rtcUnit;
 struct tm info;
@@ -28,6 +26,8 @@ struct tm info;
 #if defined(ENABLE_SERIAL_MONITOR)
 inline void showDateTime(const char* prefix, const RTCDate& date,
                          const RTCTime& time) {
+    static const char DAY_OF_WEEK[][4] = {"Sun", "Mon", "Tue", "Wed",
+                                          "Thr", "Fri", "Sat"};
     SERIAL_PRINTF_LN("%s: %04d/%02d/%02d(%s) %02d:%02d:%02d", prefix, date.year,
                      date.month, date.date, DAY_OF_WEEK[date.weekday],
                      time.hour, time.minute, time.second);
