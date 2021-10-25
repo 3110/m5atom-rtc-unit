@@ -2,6 +2,7 @@
 #define RTC_UNIT_H_
 
 #include <Wire.h>
+#include <time.h>
 
 #include "common.h"
 
